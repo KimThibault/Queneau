@@ -22,29 +22,22 @@ newAllThePoemsInAnArray = []
 
 # open file and remove BOM characters
 with codecs.open("queneauToy.txt", "r", "utf-8-sig") as allThePoems:
-    allThePoemsInAnArray = map(str, allThePoems.readlines())
+    allThePoemsInAnArray = allThePoems.readlines()
 
-allThePoems.close()
 
 # stack poem lines in a single array and remove blank lines
-for line in allThePoemsInAnArray:
-    if line.split('\n')[0] != '':
-        newAllThePoemsInAnArray.append(line.split('\n')[0])
+newAllThePoemsInAnArray = [line.strip() for line in allThePoemsInAnArray if line.strip()!='']
 
 
 ################ generate poem(s)
 
 randomPoem = []
-nLinesDoneCumul = 0
 
 # loop over lines
-for iLine in range(1,nLinesPerPoem+1):
+for nLinesDoneCumul in range(nLinesPerPoem):
     poemNumber = int(math.ceil(nPoems*random.random()))
     idxOfLine  = nLinesPerPoem*(poemNumber-1) + nLinesDoneCumul   
     line = newAllThePoemsInAnArray[idxOfLine]
     line = line.strip()
-    nLinesDoneCumul = nLinesDoneCumul + 1
     print line
-
-
 
