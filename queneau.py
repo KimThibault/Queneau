@@ -15,7 +15,7 @@ import sys
 ############## initialization
 nPoems = 10
 nLinesPerPoem = 14
-lineBreaks = [4,8,11,14]
+whereLineBreaks = [4,8,11,14]
 
 newAllThePoemsInAnArray = []
 
@@ -42,7 +42,7 @@ for nLinesDoneCumul in range(nLinesPerPoem):
     idxOfLine  = nLinesPerPoem*(poemNumber-1) + nLinesDoneCumul   
     line = newAllThePoemsInAnArray[idxOfLine]
     line = line.strip()
-    if nLinesDoneCumul in lineBreaks:
+    if nLinesDoneCumul in whereLineBreaks:
 	print ''
     print line
 
