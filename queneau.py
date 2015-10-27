@@ -13,15 +13,16 @@ import math
 import sys
 
 ############## initialization
-nPoems = 3
-nLinesPerPoem = 2
+nPoems = 10
+nLinesPerPoem = 14
+lineBreaks = [4,8,11,14]
 
 newAllThePoemsInAnArray = []
 
 ############## prepare text file
 
 # open file and remove BOM characters
-with codecs.open("queneauToy.txt", "r", "utf-8-sig") as allThePoems:
+with codecs.open("poemesQueneau.txt", "r", "utf-8-sig") as allThePoems:
     allThePoemsInAnArray = allThePoems.readlines()
 
 
@@ -34,10 +35,16 @@ newAllThePoemsInAnArray = [line.strip() for line in allThePoemsInAnArray if line
 randomPoem = []
 
 # loop over lines
+print ''
+print '         * * *  '
 for nLinesDoneCumul in range(nLinesPerPoem):
     poemNumber = int(math.ceil(nPoems*random.random()))
     idxOfLine  = nLinesPerPoem*(poemNumber-1) + nLinesDoneCumul   
     line = newAllThePoemsInAnArray[idxOfLine]
     line = line.strip()
+    if nLinesDoneCumul in lineBreaks:
+	print ''
     print line
 
+print ''
+print '         * * *  '
